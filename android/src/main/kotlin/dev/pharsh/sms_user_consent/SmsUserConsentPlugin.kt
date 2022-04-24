@@ -42,7 +42,7 @@ class SmsUserConsentPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "requestSms" -> {
                 SmsRetriever.getClient(mActivity.applicationContext).startSmsUserConsent(call.argument<String>("senderPhoneNumber"))
 
-                mActivity.registerReceiver(smsVerificationReceiver, IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION))
+                mActivity.registerReceiver(smsVerificationReceiver, SmsRetriever.SEND_PERMISSION, IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION))
                 result.success(null)
             }
         }
